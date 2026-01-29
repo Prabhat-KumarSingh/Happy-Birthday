@@ -19,9 +19,7 @@ const songs = [
     'aud/song14.m4a',
     'aud/song15.m4a',
     'aud/song16.m4a',
-    'aud/song17.m4a',
-    'aud/song18.m4a',
-    'aud/song19.m4a'
+    'aud/song17.m4a'
 ];
 
 function getRandomSong() {
@@ -200,6 +198,7 @@ setInterval(() => {
         setTimeout(() => sparkle.remove(), 1500);
     }
 }, 1000);
+
 
 
 
