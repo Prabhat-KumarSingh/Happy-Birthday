@@ -79,7 +79,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: 700;
     text-shadow: 0 2px 8px rgba(255, 122, 89, 0.2);
     white-space: nowrap;
@@ -207,7 +207,7 @@ body {
 }
 
 .btn:active {
-    transform: scale(0.5);
+    transform: scale(0.9);
 }
 
 /* Balloons */
@@ -490,3 +490,4 @@ body {
         margin: 20px;
     }
 }
+
