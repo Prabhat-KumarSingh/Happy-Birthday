@@ -79,11 +79,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 2.5em;
     font-weight: 700;
     text-shadow: 0 2px 8px rgba(255, 122, 89, 0.2);
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     font-family: 'Pacifico', cursive;
     color: #d94f36;
@@ -490,4 +490,5 @@ body {
         margin: 20px;
     }
 }
+
 
