@@ -1,6 +1,9 @@
 // Shared audio instance for birthday song
 let birthdayAudio = null;
 
+// Track if birthday message speech has been triggered
+let speechTriggered = false;
+
 // Array of songs to choose from (place your mp3 files in the project folder)
 const songs = [
     'aud/song01.m4a',
@@ -28,9 +31,13 @@ function getRandomSong() {
 
 
 
-window.onload = function () {
+const speakBirthdayMessage = function () {
+    // Only speak once
+    if (speechTriggered) return;
+    speechTriggered = true;
+
     const message = new SpeechSynthesisUtterance(
-      "\nHappy Birthday to you! Wishing you a day filled with love, joy, and all your favorite things. May this year bring you endless happiness and unforgettable memories. Enjoy your special day!"
+      "Happy Birthday to you! Wishing you a day filled with love, joy, and all your favorite things. May this year bring you endless happiness and unforgettable memories. Enjoy your special day!"
     );
 
     message.lang = "en-US";
@@ -40,6 +47,21 @@ window.onload = function () {
 
     speechSynthesis.speak(message);
   };
+
+  const body = document.querySelector("body");
+    body.addEventListener("click", speakBirthdayMessage);
+    body.addEventListener("touchstart", speakBirthdayMessage);
+    body.addEventListener("mousemove", speakBirthdayMessage);
+    body.addEventListener("keydown", speakBirthdayMessage);
+    body.addEventListener("scroll", speakBirthdayMessage);
+    body.addEventListener("wheel", speakBirthdayMessage);
+    body.addEventListener("focus", speakBirthdayMessage);
+    body.addEventListener("mouseover", speakBirthdayMessage);
+    body.addEventListener("mouseout", speakBirthdayMessage);
+    body.addEventListener("dblclick", speakBirthdayMessage);
+    body.addEventListener("abort",speakBirthdayMessage);
+    body.addEventListener("change",speakBirthdayMessage);
+
 
 // Create sparkles on page load
 function createSparkles() {
@@ -153,16 +175,16 @@ function celebrateClick() {
         card.style.animation = 'shake 0.7s ease-in-out';
     }, 10);
 
-    //pause previous speech
-    speechSynthesis.cancel();
-
-    // Play sound
+    // Play sound (which will also pause any ongoing speech)
     playSound();
 }
 
 // Play happy birthday song - pause previous and restart from beginning
 function playSound() {
     try {
+        // Pause any ongoing speech when playing a song
+        speechSynthesis.cancel();
+
         // Create audio instance if it doesn't exist
         if (!birthdayAudio) {
             birthdayAudio = new Audio();
@@ -172,6 +194,7 @@ function playSound() {
 
         // Choose a random song and play it from the start
         const chosen = getRandomSong();
+        console.log(chosen);
         birthdayAudio.pause();
         birthdayAudio.src = chosen;
         birthdayAudio.currentTime = 0;
@@ -197,6 +220,19 @@ document.head.appendChild(style);
 // Initialize on page load
 window.addEventListener('load', () => {
     createSparkles();
+    
+    // Trigger speech on first user interaction
+    const firstInteractionHandler = () => {
+        speakBirthdayMessage();
+        // Remove listeners after first interaction
+        document.removeEventListener('click', firstInteractionHandler);
+        document.removeEventListener('keydown', firstInteractionHandler);
+        document.removeEventListener('touchstart', firstInteractionHandler);
+    };
+    
+    document.addEventListener('click', firstInteractionHandler);
+    document.addEventListener('keydown', firstInteractionHandler);
+    document.addEventListener('touchstart', firstInteractionHandler);
 });
 
 // Create random sparkles continuously
@@ -212,4 +248,3 @@ setInterval(() => {
         setTimeout(() => sparkle.remove(), 1500);
     }
 }, 1000);
-
