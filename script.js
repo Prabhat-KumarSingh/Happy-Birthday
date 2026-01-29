@@ -162,6 +162,7 @@ function playSound() {
         birthdayAudio.pause();
         birthdayAudio.src = chosen;
         birthdayAudio.currentTime = 0;
+        console.log(chosen);
         birthdayAudio.play().catch(error => {
             console.log('Audio playback error:', error);
         });
@@ -199,5 +200,6 @@ setInterval(() => {
         setTimeout(() => sparkle.remove(), 1500);
     }
 }, 1000);
+
 
 
