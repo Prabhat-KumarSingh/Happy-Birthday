@@ -26,21 +26,6 @@ function getRandomSong() {
     return songs[Math.floor(Math.random() * songs.length)];
 }
 
-
-
-window.onload = function () {
-    const message = new SpeechSynthesisUtterance(
-      "\nHappy Birthday to you! Wishing you a day filled with love, joy, and all your favorite things. May this year bring you endless happiness and unforgettable memories. Enjoy your special day!"
-    );
-
-    message.lang = "en-US";
-    message.rate = 1;   // speed (0.5–2)
-    message.pitch = 2; // voice pitch
-    message.volume = 1;
-
-    speechSynthesis.speak(message);
-  };
-
 // Create sparkles on page load
 function createSparkles() {
     const sparklesContainer = document.getElementById('sparkles');
@@ -212,3 +197,4 @@ setInterval(() => {
         setTimeout(() => sparkle.remove(), 1500);
     }
 }, 1000);
+
