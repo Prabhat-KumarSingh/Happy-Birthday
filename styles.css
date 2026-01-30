@@ -191,7 +191,8 @@ body {
     font-style: oblique;
     color: #de8900e7;
     margin: 0px;
-    padding: 0px;  
+    padding: 0px;
+    animation: bounce 10s infinite, glow 1.5s infinite;
     }
 
 .btn {
@@ -503,6 +504,7 @@ body {
         margin: 20px;
     }
 }
+
 
 
 
