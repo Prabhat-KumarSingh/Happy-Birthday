@@ -184,7 +184,7 @@ body {
 
 
 .regards{
-    font-size: 0.6em;
+    font-size: clamp(0.4rem, 2vw, 0.8rem);
     display: flex;
     justify-content: end;
     text-align: left;
@@ -503,6 +503,7 @@ body {
         margin: 20px;
     }
 }
+
 
 
 
