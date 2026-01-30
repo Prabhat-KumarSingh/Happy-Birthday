@@ -1,6 +1,10 @@
 // Shared audio instance for birthday song
 let birthdayAudio = null;
 
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
 // Array of songs to choose from (place your mp3 files in the project folder)
 const songs = [
     'aud/song01.m4a',
@@ -198,6 +202,7 @@ setInterval(() => {
         setTimeout(() => sparkle.remove(), 1500);
     }
 }, 1000);
+
 
 
 
